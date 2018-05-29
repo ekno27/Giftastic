@@ -1,0 +1,28 @@
+h1{
+   margin: 0 auto;
+}
+.container{
+    max-width: 1424px;
+}
+#btn-space{
+margin: 3%;
+}
+img{
+    width: 200px;
+    height: 200px;
+}
+.btn{
+    margin-right: 2px;
+
+}
+
+.card{
+    float: left;
+    width: 18rem;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.image:hover{
+    color: blue;
+
+}
