@@ -1,5 +1,24 @@
 $(document).ready(function() {
     var topics = [];
+
+
+   function submitFunction(){
+        var topicInput = $("#interest-id").val().trim();
+        var presentCheck = false;
+        for( var i = 0;i<topics.length;i++){
+            if(topics[i]===topicInput){
+                presentCheck = true;
+            }
+        }
+        if(presentCheck){
+            alert(topicInput +" has already been added!");
+        }
+        else{
+            topics.push(topicInput);
+            //contracturally obligated to do this but ok
+            makeButtons(); 
+        }
+    }
     
     //function that will display gifs and ratings given the giphy api 
     function displayGif(){
@@ -44,7 +63,7 @@ $(document).ready(function() {
                     // downloadLink.attr("href", movingURL);
                     // downloadLink.text("Click to download ");
                     $(textDiv).append(p);
-                    $(textDiv).append("<a class='card-link' href='"+movingURL+"' target='_blank' download> Click to see the gif on a new page</a>");
+                    $(textDiv).append("<a class='card-link' href='"+movingURL+"' target='_blank'> Click to see the gif on a new page</a>");
                     // $(textDiv).append(downloadLink);
                     $(gifDiv).append(image);
                     $(gifDiv).append(textDiv);
@@ -73,24 +92,19 @@ $(document).ready(function() {
     
    //event listnener that takes input and creates a button for it 
     $("#submit").on("click",function(){
-        var topicInput = $("#interest-id").val().trim();
-        var presentCheck = false;
-        for( var i = 0;i<topics.length;i++){
-            if(topics[i]===topicInput){
-                presentCheck = true;
-            }
-        }
-        if(presentCheck){
-            alert(topicInput +" has already been added!");
-        }
-        else{
-            topics.push(topicInput);
-            //contracturally obligated to do this but ok
-            makeButtons(); 
-        }
+      
+        submitFunction();
        
     });
 
+    //event listener for enter key
+    document.onkeyup = function(event){
+        key = event.key;
+        if (key === "Enter"){
+            submitFunction();
+        }
+        // console.log(key);
+    }
     $("#gif-space").on("click",".gif-image",function(){
         var state = $(this).attr("state");
         console.log(state);
