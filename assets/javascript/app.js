@@ -35,13 +35,13 @@ $(document).ready(function() {
             }).then(function(response){
             //replaces instead of prepending 
             $("#gif-space").empty();
-            // console.log(response);
+           
             for (var i = 0;i<response.data.length;i++){
                 var stillURL =  response.data[i]
                 .images.fixed_height_still.url;
-                // console.log(stillURL);
+                
                 var rating = response.data[i].rating;
-                // console.log(rating);
+             
                 
                 var movingURL = response.data[i].images.fixed_height.url;
                 console.log(movingURL);
@@ -93,8 +93,8 @@ $(document).ready(function() {
     $(window).keydown(function(event){
         if(event.keyCode == 13) {
           event.preventDefault();
-          submitFunction();
           return false;
+          submitFunction();
         }
       });
 
@@ -107,15 +107,15 @@ $(document).ready(function() {
        
     });
 
+
     //event listener for enter key
-    $('.form-control').keypress(function (e) {
-        if (e.which == 13) {
-            console.log("fjkf")
-          $('.form-control').submitFunction();
+    $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+          event.preventDefault();
+          submitFunction();
+          return false;
         }
       });
-        
-    // console.log(key);
     $("#gif-space").on("click",".gif-image",function(){
         var state = $(this).attr("state");
         console.log(state);
