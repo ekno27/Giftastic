@@ -1,5 +1,6 @@
 $(document).ready(function() {
     var topics = [];
+    
 
 
    function submitFunction(){
@@ -88,23 +89,33 @@ $(document).ready(function() {
         }
     }
 
+
+    $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+          event.preventDefault();
+          submitFunction();
+          return false;
+        }
+      });
+
    
     
    //event listnener that takes input and creates a button for it 
     $("#submit").on("click",function(){
-      
+        
         submitFunction();
        
     });
 
     //event listener for enter key
-    document.onkeyup = function(event){
-        key = event.key;
-        if (key === "Enter"){
-            submitFunction();
+    $('.form-control').keypress(function (e) {
+        if (e.which == 13) {
+            console.log("fjkf")
+          $('.form-control').submitFunction();
         }
-        // console.log(key);
-    }
+      });
+        
+    // console.log(key);
     $("#gif-space").on("click",".gif-image",function(){
         var state = $(this).attr("state");
         console.log(state);
